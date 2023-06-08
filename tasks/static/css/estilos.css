@@ -1,0 +1,171 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+:root{
+    --primary: #111B54;
+    --ligth: #ffffff;
+    --grey: #efefef;
+}
+
+body {
+    font-family: poppins;
+    font-size: 15px;
+    overflow: hidden;
+    color: var(--primary)
+}
+
+.bg-primary {background-color: var(--primary) !important;}
+
+.avatar{
+    max-width: 120px;
+    margin-left: 50px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.logodos {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+.contenido {
+    color: #111B54;
+}
+
+
+
+.masthead{
+    height: 800px;
+}
+
+.containeruno {
+    border: none;
+}
+
+.sin {
+    box-shadow: 0 0 20px rgb(141, 144, 144);
+}
+
+.avatarform {
+    max-height: 50;
+    max-width: 230px;
+    margin-left: 50px;
+    margin-right: 20px;
+    margin-top: 20px;
+
+}
+
+a:link {
+    text-decoration: none;
+}
+
+h4 {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#menu {
+    color: #ffffff;
+}
+
+#sidebar-container {
+    min-height: 100vh;
+}
+
+#sidebar-container .logo {
+    padding: .875rem 1.25rem;
+}
+
+#sidebar-container .menu{
+    width: 18rem;
+}
+#sidebar-container .logodos {
+    padding: .875rem 1.25rem;
+}
+
+#content {
+    overflow-y: auto;
+    height: 100vh;
+    padding-bottom: 5rem;
+}
+
+.menu a:hover {
+    background: #0c5881;
+}
+
+a, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-top: 10px;   
+    padding-bottom: 10px;
+    background-color: steelblue;
+    width: 97%;
+}
+
+.left {
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-left: 47px;
+    float: left;
+    position: relative;
+    width: 45%;
+    border: none;
+    height: auto;
+}
+
+.right {
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: 10px;
+    position: relative;
+    float: left;
+    width: 45%;
+    border: none;
+    height: auto;
+}
+
+#scroll {
+    overflow-y: auto;
+    height: 100vh;
+    padding-bottom: 5rem;
+}
+
+/* Estilos para pantallas pequeñas (smartphones) */
+@media screen and (max-width: 767px) {
+    /* Aplica estilos específicos para pantallas pequeñas aquí */
+    /* Por ejemplo: */
+    body {
+      font-size: 14px;
+    }
+  }
+  
+  /* Estilos para pantallas medianas (tablets) */
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    /* Aplica estilos específicos para pantallas medianas aquí */
+    /* Por ejemplo: */
+    body {
+      font-size: 16px;
+    }
+  }
+  
+  /* Estilos para pantallas grandes (escritorios) */
+  @media screen and (min-width: 993px) {
+    /* Aplica estilos específicos para pantallas grandes aquí */
+    /* Por ejemplo: */
+    body {
+      font-size: 18px;
+    }
+  }
+  
+  .seleccionado {
+    background-color: yellow;
+    font-weight: bold;
+}

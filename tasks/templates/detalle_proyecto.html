@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}  
+    {% load crispy_forms_tags %} 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico'%}">
+    <title>Oudeco</title>
+  </head>
+  <body>
+    
+    <div class="d-flex">
+      <div id="sidebar-container" class="bg-primary">
+        <div class="logodos">
+          <img src="{% static 'img/ref.png' %}" class="img-fluid avatar mr-5">
+        </div>
+          <div class="logo">
+    
+            </div>
+            <div class="menu">
+              <a href="/home/" class="d-block p-3 text-light"><i class="fa-solid fa-house-user mr-2 ml-5"></i> Home</a>
+              <a href="/cliente/" class="d-block p-3 text-light"><i class="fa-solid fa-handshake mr-2 ml-5"></i> Clientes</a>
+              <a href="/ingeniero/" class="d-block p-3 text-light"><i class="fa-solid fa-people-group mr-2 ml-5"></i> Ingenieros</a>
+              <a href="/proyecto/" class="d-block p-3 text-light"><i class="fa-sharp fa-solid fa-code mr-2 ml-5"></i> Proyectos</a>
+              <a href="/actividad/" class="d-block p-3 text-light"><i class="fa-sharp fa-solid fa-chart-line mr-2 ml-5"></i> Actividades</a>
+              <a href="/generarreporte/" class="d-block p-3 text-light"><i class="fa-solid fa-sheet-plastic mr-2 ml-5"></i> Generar Reporte</a>
+              <a href="/moneda/" class="d-block p-3 text-light"><i class="fa-sharp fa-solid fa-money-bill-1-wave mr-2 ml-5"></i> Moneda</a>
+            </div>
+        </div>
+        <div class="w-100 mt-3 border-buttom">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <p class="nav-link active fw-bold" aria-current="page" href="#">|</p>
+                  </li>
+                  {% if user.is_authenticated %}
+                  <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ion-icon class="mr-2 lead" name="person"></ion-icon>
+                  </a>
+                  <p class="mt-2 mr-2 fst-italic">{{ user.username }}</p>
+                  <li class="nav-item">
+                    <p class="nav-link active fw-bold" aria-current="page" href="#">|</p>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Ver perfil</a>
+                  </li>
+                  <li class="nav-item">
+                    <p class="nav-link active fw-bold" aria-current="page" href="#">|</p>
+                  </li>
+                  <a href="/logout" class="nav-link text-primary" aria-current="page"><i class="fa-solid fa-power-off mr-2"></i>Cerrar sesion</a>
+                  <li class="nav-item">
+                    <p class="nav-link active fw-bold mr-5" aria-current="page" href="#">|</p>
+                  </li>
+                  {% endif %}
+                </div>
+              </div>
+            </nav>
+            <section id="content">
+                <main class="bgeditar container py-3">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div method="POST" class="containeruno card card-body">
+                                <h3 class="text-center py-2">Actualizar Datos</h3>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        {{form | crispy}}
+                                            <main class="container iist-group">
+                                                <section class="mt-3">
+                                                    <div class="text-center">
+                                                        <button class="btn btn-primary">
+                                                            Actualizar
+                                                        </button>
+                                                    </div>
+                                                </section>
+                                            </main>
+                                    </form>
+                                    <main class="container iist-group btn-block">
+                                        <section class="mt-3">
+                                            <div class="text-center">
+                                                <form action="{% url 'eliminar_proyecto' proyecto.Codigo %}" method="POST">
+                                                    {% csrf_token %}
+                                                        <button class="btn btn-secondary mb-5 btnEliminacion">
+                                                            Eliminar
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                        </section>
+                                    </main>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                
+            </section>
+          </div>
+      </div>
+
+      <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/nota.js' %}"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+            {%  if messages %}
+              {% for m in messages %}
+                <script>
+                    Swal.fire({
+                        "title": "Hecho",
+                        "text" : "{{m}}",
+                        "icon" : "success"
+                    })
+                </script>
+              {% endfor %}
+            {% endif %}
+    
+        </body>
+  </html>
